@@ -1,0 +1,10 @@
+lightweight tag 2d97a800da7b28497afc973e56b371207689933f v1.8.6
+Author:	Azilroka <darktemplar9900@yahoo.com>
+Date:	Sun Aug 14 08:55:06 2022 -0500
+
+commit 2d97a800da7b28497afc973e56b371207689933f
+Author: Azilroka <darktemplar9900@yahoo.com>
+Date:   Sun Aug 14 08:55:06 2022 -0500
+
+    Minor 105
+
