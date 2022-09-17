@@ -266,7 +266,7 @@ function HealBarsClassic:createHealBars(unitFrame, textureType)
 	local shieldEventFrame = CreateFrame("Frame","HealBarsClassicAuraEventFrame"..unitFrame:GetName(), unitFrame)
 	shieldEventFrame:SetScript("OnEvent",function(self) HealBarsClassic:UpdateAuras(self:GetParent()) end)
 	shieldEventFrame:RegisterUnitEvent('UNIT_AURA',(HealBarsClassic:GetFrameInfo(unitFrame)))
-	shieldEventFrame:RegisterUnitEvent('UNIT_HEALTH',(HealBarsClassic:GetFrameInfo(unitFrame)))
+	shieldEventFrame:RegisterUnitEvent('UNIT_HEALTH_FREQUENT',(HealBarsClassic:GetFrameInfo(unitFrame)))
 	shieldEventFrame:RegisterUnitEvent('UNIT_MAXHEALTH',(HealBarsClassic:GetFrameInfo(unitFrame)))
 
 end
@@ -319,7 +319,7 @@ function HealBarsClassic:UpdateHealBars(unitFrame)
 	if not displayedUnit or not UnitExists(displayedUnit) or not healBarTable[unitFrame] then return end
 	
 	local eventFrame = _G['HealBarsClassicEventFrame'..unitFrame:GetName()]
-	eventFrame:RegisterUnitEvent("UNIT_HEALTH",(HealBarsClassic:GetFrameInfo(unitFrame)))
+	eventFrame:RegisterUnitEvent("UNIT_HEALTH_FREQUENT",(HealBarsClassic:GetFrameInfo(unitFrame)))
 	eventFrame:RegisterUnitEvent("UNIT_MAXHEALTH",(HealBarsClassic:GetFrameInfo(unitFrame)))
 			
 	
