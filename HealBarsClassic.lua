@@ -88,7 +88,7 @@ local defensiveSpells = {
 	--, [20711] = {name = 'SPIRIT', duration = 15, priority = 1} -- Spirit of Redemption
 	--, [29166] = {name = 'INERVTE', duration = 20, priority = 40} -- Innervate 
 	} 
-local shieldSpells = {
+local shieldSpells = { -- libHealComm does not seem to work on shields
 	[17] = {} -- Power Word: Shield Rank 1
 	, [592] = {} -- Power Word: Shield Rank 2
 	, [600] = {} -- Power Word: Shield Rank 3
