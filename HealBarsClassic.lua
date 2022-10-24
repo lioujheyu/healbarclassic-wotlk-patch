@@ -42,15 +42,16 @@ HBCDefaultColors = {
 }	
 HealBarsClassic.invulStatusTextConfigList = {
 	['DIVSHLD'] = 'Divine Shield - DIVSHLD',
-	['DIVPROT'] = 'Divine Protection - DIVPROT',
-	['BLSPROT'] = 'Blessing of Protection - BLSPROT',
+	['HNDPROT'] = 'Hand of Protection - HNDPROT',
 	['ICEBLCK'] = 'Ice Block - ICEBLCK',
 	['DIVINTR'] = 'Divine Intervention - DIVINTR',
 }
 HealBarsClassic.strongMitStatusTextConfigList = {
 	['EVASION'] = 'Evasion - EVASION',
 	['SHDWALL'] = 'Shield Wall - SHDWALL',
-	['CHEATDTH'] = 'Cheat Death - CHEATDTH'
+	['CHEATDTH'] = 'Cheat Death - CHEATDTH',
+	['DIVPROT'] = 'Divine Protection - DIVPROT',
+	['DISPERSE'] = 'Dispersion - DISPERSE'
 }
 HealBarsClassic.softMitStatusTextConfigList = {
 	['BARKSKIN'] = 'Barkskin - BARKSKIN',
@@ -64,20 +65,21 @@ HealBarsClassic.miscStatusTextConfigList = {
 
 local defensiveSpells = {
 	[642] = {name = 'DIVSHLD',duration = 12, priority = 2} -- Divine Shield Rank 1
-	, [1020] = {name = 'DIVSHLD',duration = 12, priority = 2} -- Divine Shield Rank 2
-	, [1022] = {name = 'BLSPROT',duration = 6, priority = 10} -- Blessing of Protection Rank 1
-	, [5599] = {name = 'BLSPROT',duration = 6, priority = 10} -- Blessing of Protection Rank 2
-	, [10278] = {name = 'BLSPROT',duration = 6, priority = 10} -- Blessing of Protection Rank 3
-	, [498] = {name = 'DIVPROT',duration = 6, priority = 2} -- Divine Protection Rank 1
-	, [5573] = {name = 'DIVPROT',duration = 6, priority = 2} -- Divine Protection Rank 2
+	, [1020] = {name = 'DIVSHLD',duration = 12, priority = 2} -- Divine Shield Rank 2 -- not in WotLK
+	, [1022] = {name = 'HNDPROT',duration = 6, priority = 10} -- Hand of Protection Rank 1
+	, [5599] = {name = 'HNDPROT',duration = 8, priority = 10} -- Hand of Protection Rank 2
+	, [10278] = {name = 'HNDPROT',duration = 10, priority = 10} -- Hand of Protection Rank 3
+	, [498] = {name = 'DIVPROT',duration = 12, priority = 20} -- Divine Protection Rank 1
+	, [5573] = {name = 'DIVPROT',duration = 12, priority = 20} -- Divine Protection Rank 2 -- not in WotLK
 	, [45438] = {name = 'ICEBLCK',duration = 10, priority = 2} -- Ice Block
 	, [19753] = {name = 'DIVINTR',duration = 45, priority = 1} -- Divine Intervention 
 								-- (Rarely held for full duration & frequently breaks from release->res)							
 	
 	, [26669] = {name = 'EVASION', duration = 15, priority = 20} -- Evasion Rank 2
 	, [5277] = {name = 'EVASION', duration = 15, priority = 20} -- Evasion Rank 1
-	, [871] = {name = 'SHDWALL', duration = 10, priority = 5} -- Shield Wall
+	, [871] = {name = 'SHDWALL', duration = 12, priority = 5} -- Shield Wall
 	, [45182] = {name = 'CHEATDTH', duration = 3, priority = 5} -- Cheat Death
+	, [47585] = {name = 'DISPERSE', duration = 6, priority = 5} -- DISPERSION
 	
 	, [22812] = {name = 'BARKSKIN', duration = 12, priority = 30} -- Bark Skin
 	, [30823] = {name = 'SHMRGE', duration = 15, priority = 30} -- Shamanistic Rage
@@ -99,19 +101,24 @@ local shieldSpells = {
 	, [10901] = {} -- Power Word: Shield Rank 10
 	, [25217] = {} -- Power Word: Shield Rank 11
 	, [25218] = {} -- Power Word: Shield Rank 12
+	, [48065] = {} -- Power Word: Shield Rank 13
+	, [48066] = {} -- Power Word: Shield Rank 14
 	, [1463] = {} -- Mana Shield Rank 1
 	, [8494] = {} -- Mana Shield Rank 2
 	, [8495] = {} -- Mana Shield Rank 3
 	, [10191] = {} -- Mana Shield Rank 4
 	, [10192] = {} -- Mana Shield Rank 5
 	, [10193] = {} -- Mana Shield Rank 6
-	, [27131] = {} -- Mana Shield Rank 6
+	, [27131] = {} -- Mana Shield Rank 7
+	, [43019] = {} -- Mana Shield Rank 8
+	, [43020] = {} -- Mana Shield Rank 9
 	, [11426] = {} -- Ice Barrier Rank 1
 	, [13031] = {} -- Ice Barrier Rank 2
 	, [13032] = {} -- Ice Barrier Rank 3
 	, [13033] = {} -- Ice Barrier Rank 4
 	, [27134] = {} -- Ice Barrier Rank 5
 	, [33405] = {} -- Ice Barrier Rank 6
+	, [43038] = {} -- Ice Barrier Rank 7
 	, [7812] = {} -- Sacrifice Rank 1
 	, [19438] = {} -- Sacrifice Rank 2
 	, [19440] = {} -- Sacrifice Rank 3
@@ -119,6 +126,9 @@ local shieldSpells = {
 	, [19442] = {} -- Sacrifice Rank 5
 	, [19443] = {} -- Sacrifice Rank 6
 	, [27273] = {} -- Sacrifice Rank 7
+	, [47985] = {} -- Sacrifice Rank 8
+	, [47986] = {} -- Sacrifice Rank 9
+	, [58597] = {} -- Sacred Shield Rank 1 (The spell id is the shield trigered by attack, not the spell casted by pally)
 	--, [22812] = {} -- Barkskin (debug only)
 	
 
