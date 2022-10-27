@@ -103,6 +103,7 @@ function HealBarsClassic:CreateConfigs()
 					..'Power Word: Shield\n'
 					..'Ice Barrier\n'
 					..'Mana Shield\n'
+					..'Sacred Shield\n'
 					..'Sacrifice (Voidwalker)\n',
 				width = 'full',
 				get = function() return HBCdb.global.shieldGlow end,

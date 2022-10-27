@@ -51,12 +51,12 @@ HealBarsClassic.strongMitStatusTextConfigList = {
 	['SHDWALL'] = 'Shield Wall - SHDWALL',
 	['CHEATDTH'] = 'Cheat Death - CHEATDTH',
 	['DIVPROT'] = 'Divine Protection - DIVPROT',
-	['DISPERSE'] = 'Dispersion - DISPERSE'
+	['DISPERSE'] = 'Dispersion - DISPERSE',
+	['PAINSPR'] = 'Pain Supression - PAINSPR',
 }
 HealBarsClassic.softMitStatusTextConfigList = {
 	['BARKSKIN'] = 'Barkskin - BARKSKIN',
-	['PAINSPR'] = 'Pain Supression - PAINSPR',
-	['SHMRAGE'] = 'Shamanistic Rage - SHMRAGE'
+	['SHMRAGE'] = 'Shamanistic Rage - SHMRAGE',
 }
 HealBarsClassic.miscStatusTextConfigList = {
 	-- ['INERVTE'] = 'Innervate - INERVTE', 
@@ -69,8 +69,6 @@ local defensiveSpells = {
 	, [1022] = {name = 'HNDPROT',duration = 6, priority = 10} -- Hand of Protection Rank 1
 	, [5599] = {name = 'HNDPROT',duration = 8, priority = 10} -- Hand of Protection Rank 2
 	, [10278] = {name = 'HNDPROT',duration = 10, priority = 10} -- Hand of Protection Rank 3
-	, [498] = {name = 'DIVPROT',duration = 12, priority = 20} -- Divine Protection Rank 1
-	, [5573] = {name = 'DIVPROT',duration = 12, priority = 20} -- Divine Protection Rank 2 -- not in WotLK
 	, [45438] = {name = 'ICEBLCK',duration = 10, priority = 2} -- Ice Block
 	, [19753] = {name = 'DIVINTR',duration = 45, priority = 1} -- Divine Intervention 
 								-- (Rarely held for full duration & frequently breaks from release->res)							
@@ -80,15 +78,17 @@ local defensiveSpells = {
 	, [871] = {name = 'SHDWALL', duration = 12, priority = 5} -- Shield Wall
 	, [45182] = {name = 'CHEATDTH', duration = 3, priority = 5} -- Cheat Death
 	, [47585] = {name = 'DISPERSE', duration = 6, priority = 5} -- DISPERSION
+	, [33206] = {name = 'PAINSPR', duration = 8, priority = 25} -- Pain Suppression
+	, [498] = {name = 'DIVPROT',duration = 12, priority = 20} -- Divine Protection Rank 1
+	, [5573] = {name = 'DIVPROT',duration = 12, priority = 20} -- Divine Protection Rank 2 -- not in WotLK
 	
 	, [22812] = {name = 'BARKSKIN', duration = 12, priority = 30} -- Bark Skin
 	, [30823] = {name = 'SHMRGE', duration = 15, priority = 30} -- Shamanistic Rage
-	, [33206] = {name = 'PAINSPR', duration = 8, priority = 25} -- Pain Suppression
 	
 	--, [20711] = {name = 'SPIRIT', duration = 15, priority = 1} -- Spirit of Redemption
 	--, [29166] = {name = 'INERVTE', duration = 20, priority = 40} -- Innervate 
 	} 
-local shieldSpells = { -- libHealComm does not seem to work on shields
+local shieldSpells = {
 	[17] = {} -- Power Word: Shield Rank 1
 	, [592] = {} -- Power Word: Shield Rank 2
 	, [600] = {} -- Power Word: Shield Rank 3
@@ -153,12 +153,14 @@ local HBCdefault = {
 			['*'] = false,
 			['DIVSHLD'] = true,
 			['DIVPROT'] = true,
-			['BLSPROT'] = true,
+			['HNDPROT'] = true,
 			['DIVINTR'] = true,
 			['ICEBLCK'] = true,
 			['SHDWALL'] = true,
 			['EVASION'] = true,
 			['CHEATDTH'] = true,
+			['DISPERSE'] = true,
+			['PAINSPR'] = true,
 			--['SPIRIT'] = true,
 		},
 		predictiveHealthLost = false,
@@ -265,7 +267,7 @@ function HealBarsClassic:createHealBars(unitFrame, textureType)
 	local shieldFrame = healthBar:CreateTexture("HBCShieldBar"..unitFrame:GetName(),'ARTWORK',healthBar,2)
 	shieldFrame:SetTexture("Interface\\RaidFrame\\Shield-Overshield")
 	shieldFrame:SetBlendMode("ADD")
-	shieldFrame:SetWidth(16)
+	shieldFrame:SetWidth(8)
 	shieldFrame:Hide()
 			
 	shieldBarTable[unitFrame] = shieldFrame
@@ -385,7 +387,7 @@ function HealBarsClassic:UpdateShieldGlow(unitFrame)
 		local maxHealth= UnitHealthMax(displayedUnit)
 		local health= UnitHealth(displayedUnit)
 		local healthWidth=healthBar:GetWidth() * (health / maxHealth)
-		shieldFrame:SetPoint('TOPLEFT',healthBar,'TOPLEFT',healthWidth - 7,0)
+		shieldFrame:SetPoint('TOPLEFT',healthBar,'TOPLEFT',healthWidth - 3,0)
 		shieldFrame:SetHeight(healthBar:GetHeight())
 		shieldFrame:Show()
 	else
